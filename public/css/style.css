@@ -1,0 +1,189 @@
+/*General*/
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /*color: hsl(var(--clr-white));*/
+    /*background-color: hsl(--clr-dark);*/
+    line-height: 1.5;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+
+    overflow-x: hidden;
+}
+
+.flex {
+    display: flex;
+    gap: var(--gap, 3rem);
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* primary header */
+.logo {
+    margin: 1.5rem;
+    border-radius: 50%;
+    max-width: 20%;
+    max-height: 20%;
+
+}
+
+.primary-header {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.primary-navigation a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4.72px;
+    color: black;
+}
+
+.primary-navigation a>span[aria-hidden="true"] {
+    font-weight: 700;
+    margin-inline-end: .75rem;
+}
+
+/*Mobile screen size*/
+@media (max-width: 65em) {
+    .primary-navigation a {
+        font-size: 20px;
+    }
+
+    .primary-navigation {
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 30%;
+
+        flex-direction: column;
+        padding: min(35vh, 20rem) 5rem;
+        background: black;
+
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+    .mobile-nav-toggle {
+        position: fixed;
+        display: block;
+        background-color: transparent;
+        background: url("../assets/shared/menu-hamburger.png");
+        background-repeat: no-repeat;
+        width: 5rem;
+
+        /*Importante investigar*/
+        aspect-ratio: 1;
+        border: 0;
+        top: 2rem;
+        right: 3rem;
+        /*9999 because its gonna be on top of everything else*/
+        z-index: 9999;
+    }
+
+    .mobile-nav-toggle[aria-expanded="true"] {
+        background: url("../assets/shared/close.png");
+        background-repeat: no-repeat;
+    }
+}
+
+/*para cuando se aproxime a esas dimensiones 
+mostrar el menu hamburguesa y elimine los numeros*/
+
+@media(min-width:65em) and (max-width:70em) {
+    .primary-navigation a>span[aria-hidden] {
+        display: none;
+    }
+}
+
+
+/*SEARCH BOTTOM*/
+
+.busqueda {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 10%;
+    float: right;
+}
+
+.busqueda input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
+}
+
+.busqueda button {
+    color:white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+    background-color: black;
+}
+
+/*MAIN BOX STYLE*/
+
+.mainbox {
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.mainbox img {
+    width: 30%;
+    height: 10%;
+    object-fit: cover;
+    margin-right: 30px;
+    border-radius: 4px;
+}
+
+.boxcontent {
+    flex: 1;
+    text-align: center;
+}
+
+.boxcontent h2 {
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.boxcontent p {
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.boxdate {
+    font-size: 12px;
+    color: #666;
+}
